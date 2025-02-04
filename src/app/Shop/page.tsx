@@ -24,7 +24,7 @@ export default function ShopHero() {
       name: "Jane Smith",
       price: "Rp 2.500.000",
       age: 25,
-      image: "https://via.placeholder.com/100",
+      image: "https://images.search.yahoo.com/search/images;_ylt=AwrjcGKGm6JnPQIAUR9XNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3BpdnM-?p=google+furniture+images+out+of+country&fr2=piv-web&type=E210US91215G0&fr=mcafee#id=33&iurl=https%3A%2F%2Fwww.southshorefurniture.com%2Fcdn%2Fshop%2Ffiles%2F16179_16180_16181_16182_16208_lifestyle.jpg%3Fv%3D1728590142%26width%3D1070&action=click",
       description: "A creative designer who loves creating stunning visuals.",
     },
     {

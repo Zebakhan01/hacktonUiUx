@@ -1,30 +1,24 @@
-import Header from "./component/header"
-import Image from "next/image";
-import HeroImage from "../../public/Pictures/Hero.png";
+// import Footer from "@/components/Footer";
+// import Header from "@/components/Header";
+import Cart from "./cart/page";
+import Hero from "./component/Hero";
+import Ourproduct from "./component/Ourproduct";
 import Products from "./component/Poducts";
-import Hero2 from "./component/page";
+import Slides from "./component/Slide";
+import SubHero from "./component/Subhero";
+import ProductCards from "./Products/page";
 
-export default function Hero() {
+export default function Home(){
   return (
     <>
-   
-      {/* w90rem h 63 */}
-      <div className="heroImage w-[1440px] h-[1440px] ">
-        <Image
-          src={HeroImage}
-          width={1440}
-          height={100}
-          alt="Picture of the author"
-        />
-        <div className="heroText  bg-[#FFF3E3] w-[222px] h-[74px] absolute top-[585px] left-[778px] p-t[25px].[25px] p-r[72px] p-b[25px] p-l[72px] gap-[10px]">
-          <h6>New Arrival</h6>
-          <h3>Discover Our <br /> New Collection</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            dolore</p>
-            <button className=" buyBtn #B88E2F">BUY NOW</button>
-        </div>
-      </div>
+    
+    {/* <Header/> */}
+    <Hero/>
+    <SubHero/>
+ <Ourproduct/>
+    <Slides/>
+  
+    {/* <Footer/> */}
     </>
-  );
+  )
 }
