@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
@@ -46,9 +47,9 @@ const ProductDetail = ({ product }: { product:Product }) => {
         <p className="text-gray-600">
           <span className="font-medium">Stock Level: </span>
           {product.stockLevel > 0 ? (
-            <span className="text-green-600">In Stock</span>
+            <span className="text-green-700">In Stock</span>
           ) : (
-            <span className="text-red-600">Out of Stock</span>
+            <span className="text-red-800">Out of Stock</span>
           )}
         </p>
 
