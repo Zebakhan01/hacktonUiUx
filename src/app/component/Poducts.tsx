@@ -50,8 +50,8 @@ export default function Cart() {
       <div className="mb-3 mt-10 flex flex-col md:flex-row justify-evenly items-center p-2 w-full h-[8rem] bg-[#F9F1E7]">
         <div className="text-center">
           <Image src="/Group.png" width={40} height={40} alt="High Quality" />
-          <h4 className="font-bold text-sm md:text-base">High Quality</h4>
-          <p className="text-xs md:text-sm">Crafted from top materials</p>
+          <h4 className="font-bold text-sm md:text-base">High Quality </h4>
+          <p className="text-xs md:text-sm">Crafted from top materials </p>
         </div>
         <div className="text-center">
           <Image src="/warr.png" width={40} height={40} alt="Warranty Protection" />
@@ -61,7 +61,7 @@ export default function Cart() {
         <div className="text-center">
           <Image src="/vector.png" width={40} height={40} alt="Free Shipping" />
           <h4 className="font-bold text-sm md:text-base">Free Shipping</h4>
-          <p className="text-xs md:text-sm">Order over 150 $</p>
+          <p className="text-xs md:text-sm">Order over 150 $ </p>
         </div>
         <div className="text-center">
           <Image src="/customer.png" width={40} height={40} alt="24/7 Support" />

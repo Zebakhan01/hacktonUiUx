@@ -11,7 +11,7 @@ const ProductListing = ({product}:{product:Product}) => {
       <div className="flex flex-col items-center bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
         <Link href={`Product/${product.id}`}>
           <Image
-            src={urlFor(product.image.asset).url()} // Correct usage of image reference
+            src={urlFor(product.image.asset).url()} //Correct usage of image reference
             alt={product.name}
             height={300}
             width={300}
