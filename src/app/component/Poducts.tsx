@@ -19,10 +19,10 @@ export default function Cart() {
 
       <div className="p-4">
         <div className="producDetails flex flex-col md:flex-row justify-around items-center p-4 bg-[#F9F1E7]">
-          <h2 className="text-sm md:text-base">Product</h2>
-          <h2 className="text-sm md:text-base">Price</h2>
-          <h2 className="text-sm md:text-base">Quantity</h2>
-          <h2 className="text-sm md:text-base">Subtotal</h2>
+          <h2 className="text-sm md:text-base">Product </h2>
+          <h2 className="text-sm md:text-base">Price </h2>
+          <h2 className="text-sm md:text-base">Quantity </h2>
+          <h2 className="text-sm md:text-base">Subtotal </h2>
         </div>
         
         <div>

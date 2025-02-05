@@ -71,12 +71,12 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ products, onFilter })
           }}
           className="p-2 border rounded-md"
         >
-          <option value="">All Prices</option>
-          <option value="0-50">$0 - $50</option>
-          <option value="50-100">$50 - $100</option>
-          <option value="100-200">$100 - $200</option>
-          <option value="200-500">$200 - $500</option>
-          <option value="500-1000">$500 - $1000</option>
+          <option value="">All Prices git</option>
+          <option value="0-50">$0 - $50 </option>
+          <option value="50-100">$50 - $100 </option>
+          <option value="100-200">$100 - $200 </option>
+          <option value="200-500">$200 - $500 </option>
+          <option value="500-1000">$500 - $1000 </option>
         </select>
 
         {/* Filter Button */}
