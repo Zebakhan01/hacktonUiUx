@@ -1,4 +1,4 @@
-import { defineType } from "sanity"
+import { defineType } from "sanity";
 
 export const product = defineType({
     name: "product",
@@ -18,7 +18,7 @@ export const product = defineType({
             title:"Description",
         },
         {
-            name: "productImage",
+            name: "productImage", // Match with query
             type: "image",
             validation: (rule) => rule.required(),
             title: "Product Image"
@@ -36,7 +36,7 @@ export const product = defineType({
             of: [{ type: "string" }]
         },
         {
-            name:"dicountPercentage",
+            name:"discountPercentage", // Fixed Typo
             type:"number",
             title:"Discount Percentage",
         },
@@ -46,4 +46,4 @@ export const product = defineType({
             title:"New Badge",
         }
     ]
-})
+});

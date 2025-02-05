@@ -6,7 +6,7 @@ import Ourproduct from "./component/Ourproduct";
 import Products from "./component/Poducts";
 import Slides from "./component/Slide";
 import SubHero from "./component/Subhero";
-import ProductCards from "./Products/page";
+
 
 export default function Home(){
   return (

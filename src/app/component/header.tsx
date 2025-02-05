@@ -24,7 +24,7 @@ export default function Header() {
         <div className="hidden lg:flex space-x-8">
           <Link href={"/"}>Home</Link>
           <Link href="/Shop">Shop</Link>
-          <Link href={"/blog"}>Blog</Link>
+          <Link href="/Blog">Blog </Link>
           <Link href={"/Contact"}>Contact</Link>
         </div>
 

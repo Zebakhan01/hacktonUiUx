@@ -16,14 +16,16 @@ const ProductCard = ({ card }: { card: Card }) => {
       style={{ width: '15rem' }}
     >
       <Link href={`/product/${card.name}`} passHref>
-        <Image
-          src={card.image}
-          alt={card.name}
-          width={285}
-          height={446}
-          className="card-img-top transition-opacity duration-500 opacity-0 hover:opacity-100"
-          style={{ transition: 'opacity 0.5s ease-in-out' }} // Smooth opacity transition
-        />
+        {/* Center the Image with flexbox */}
+        <div className="flex justify-center items-center h-72">
+          <Image
+            src={card.image}
+            alt={card.name}
+            width={285}
+            height={446}
+            className="object-contain"
+          />
+        </div>
       </Link>
       <div className="card-body p-4">
         <h5 className="card-title text-xl font-bold mb-2">{card.name}</h5>
@@ -45,14 +47,14 @@ export default function ShopHero() {
       name: 'Syltherine',
       price: 'Rp 2.500.000',
       age: 30,
-      image: '/Pictures/Images.png',  
+      image: '/Pictures/Images.png',
       description: 'Stylish cafe chair',
     },
     {
       name: 'Jane Smith',
       price: 'Rp 2.500.000',
       age: 25,
-      image: '/Pictures/dining.png', 
+      image: '/Pictures/dining.png',
       description: 'A creative designer who loves creating stunning visuals.',
     },
     // Additional objects can be added here
