@@ -9,8 +9,6 @@ import Image from 'next/image';
 import Pagination from '../component/pagination';
 
 // Define Product interface
-
-
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -22,15 +20,19 @@ const Shop = () => {
     const fetchProducts = async () => {
       const query = `*[_type == "product"]{
         category,
-        "id": _id,
+        _id,
+        title,
         price,
         description,
+         discountPercentage
         stockLevel,
         discountPercentage,
         isFeaturedProduct,
         name,
-        image: productImage.asset->url
-      }`;
+        "imageUrl": productImage.asset->url,
+        tags
+      }
+        `;
       
 
       try {
@@ -63,7 +65,7 @@ const Shop = () => {
       {/* Banner Section */}
       <div className="relative text-black">
         <Image
-          src="/shop.jpeg" // Replace with the correct image file path
+          src="/shophero.png" // Replace with the correct image file path
           alt="Shop Banner"
           height={400}
           width={1600}
@@ -91,7 +93,7 @@ const Shop = () => {
       {/* Product Listing Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {currentProducts.map(product => (
-          <ProductListing product={product} key={product.id} />
+          <ProductListing product={product} key={product._id} />
         ))}
       </div>
 

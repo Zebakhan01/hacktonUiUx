@@ -1,6 +1,8 @@
 interface Product {
+  image(image: any): unknown;
   category: string;
-  id: string;
+  _id: string;
+  title:string;
   price: number;
   description: string;
   stockLevel: number;
@@ -8,8 +10,13 @@ interface Product {
   discountPercentage: number;
   isFeaturedProduct: number;
   name: string;
-  image: any;
-  _id: string;
-  sizes:string[];
+  imageUrl: string;
+  productImage:{
+    assest:{
+      _ref:string;
+    }
+  }
+  tags:string[]
+  
   
 }

@@ -16,7 +16,7 @@ const ProductDetail = ({ product }: { product: Product }) => {
 
   const handleAddToCart = () => {
     addToCart({
-      id: product.id,
+      id: product._id,
       name: product.name,
       price: product.price,
       image: urlFor(product.image).url(),

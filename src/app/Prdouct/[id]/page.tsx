@@ -3,16 +3,22 @@
 import ProductDetail from '../../component/ProductDetail';
 import { client } from '@/sanity/lib/client';
 
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: { params: { _id: string } }) => {
   const query = `*[ _type == "product" && _id == $id]{
     name,
-    "id": _id,
+    _id,
     price,
-    description,
-    category,
-    stockLevel,
-    "image": image.asset._ref
-  }[0]`;
+    title,
+     description,
+         discountPercentage
+        stockLevel,
+        discountPercentage,
+        isFeaturedProduct,
+        name,
+        "imageUrl": productImage.asset->url,
+        tags
+      }
+       `;
 
   const product: Product | null = await client.fetch(query, { id: params.id });
 
@@ -27,7 +33,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 via-white to-blue-50">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-        <ProductDetail product={product} key={product.id} />
+        <ProductDetail product={product} key={product._id} />
       </div>
     </div>
   );
