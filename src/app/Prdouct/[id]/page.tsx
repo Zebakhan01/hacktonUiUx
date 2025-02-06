@@ -1,7 +1,6 @@
-
 // pages/product/[id].tsx
-import ProductDetail from '../../component/ProductDetail';
-import { client } from '@/sanity/lib/client';
+import ProductDetail from "../../component/ProductDetail";
+import { client } from "@/sanity/lib/client";
 
 const Page = async ({ params }: { params: { _id: string } }) => {
   const query = `*[ _type == "product" && _id == $id]{
@@ -10,17 +9,17 @@ const Page = async ({ params }: { params: { _id: string } }) => {
     price,
     title,
      description,
-         discountPercentage
-        stockLevel,
-        discountPercentage,
-        isFeaturedProduct,
-        name,
-        "imageUrl": productImage.asset->url,
+     discountPercentage
+      stockLevel,
+      discountPercentage,
+    isFeaturedProduct,
+    name,
+     "imageUrl": productImage.asset->url,
         tags
       }
        `;
 
-  const product: Product | null = await client.fetch(query, { id: params.id });
+  const product: Product | null = await client.fetch(query, { id: params._id });
 
   if (!product) {
     return (
