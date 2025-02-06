@@ -1,4 +1,3 @@
-
 'use client';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
@@ -8,7 +7,7 @@ import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { useState } from 'react';
 import { useCart } from '../../../context/CartContext';
 
-const ProductDetail = ({ product }: { product:Product }) => {
+const ProductDetail = ({ product }: { product: Product }) => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -30,7 +29,7 @@ const ProductDetail = ({ product }: { product:Product }) => {
       <div className="flex justify-center items-center">
         <div className="w-full max-w-3xl bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
           <Image
-            src={ urlFor(product.image.asset._ref).url()} 
+            src={urlFor(product.image).url()}
             alt={product.name}
             height={1000}
             width={1000}
@@ -47,9 +46,9 @@ const ProductDetail = ({ product }: { product:Product }) => {
         <p className="text-gray-600">
           <span className="font-medium">Stock Level: </span>
           {product.stockLevel > 0 ? (
-            <span className="text-green-700">In Stock</span>
+            <span className="text-green-600">In Stock</span>
           ) : (
-            <span className="text-red-800">Out of Stock</span>
+            <span className="text-red-600">Out of Stock</span>
           )}
         </p>
 

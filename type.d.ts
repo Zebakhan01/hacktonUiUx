@@ -4,10 +4,12 @@ interface Product {
   price: number;
   description: string;
   stockLevel: number;
+  imagePath: string;
   discountPercentage: number;
-  isFeaturedProduct: boolean; // Fixed type
+  isFeaturedProduct: number;
   name: string;
-  image: { asset: { _ref: string } }; // Corrected type
+  image: any;
   _id: string;
-  sizes: string[];
+  sizes:string[];
+  
 }

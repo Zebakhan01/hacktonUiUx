@@ -1,37 +1,36 @@
-import React from 'react'
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
-import Link from 'next/link';
 
-const ProductListing = ({product}:{product:Product}) => {
-  
-  // Console log to check the structure of the image field
-  console.log(product.image); // Check the structure of the image field
+// pages/product/[id].tsx
+import ProductDetail from '../../component/ProductDetail';
+import { client } from '@/sanity/lib/client';
+
+const Page = async ({ params }: { params: { id: string } }) => {
+  const query = `*[ _type == "product" && _id == $id]{
+    name,
+    "id": _id,
+    price,
+    description,
+    category,
+    stockLevel,
+    "image": image.asset._ref
+  }[0]`;
+
+  const product: Product | null = await client.fetch(query, { id: params.id });
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <h1 className="text-2xl font-bold text-gray-700">Product Not Found</h1>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      {/* Banner Section */}
-      {/* Product List */}
-      <div className="flex flex-col items-center bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-        <Link href={`Product/${product.id}`}>
-          <Image
-            src={product.image?.asset ? urlFor(product.image.asset).url() : '/fallback-image.jpg'} // Fallback check for image
-            alt={product.name}
-            height={300}
-            width={300}
-            className="h-[250px] w-full object-cover"
-          />
-        </Link>
-        {/* Product Details */}
-        <div className="p-4 text-center">
-          {/* Product Name */}
-          <p className="text-lg font-medium text-gray-800">{product.name}</p>
-          {/* Product Price */}
-          <h3 className="text-xl font-semibold text-gray-900 mt-2">${product.price}</h3>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 via-white to-blue-50">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        <ProductDetail product={product} key={product.id} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductListing;
+export default Page;
