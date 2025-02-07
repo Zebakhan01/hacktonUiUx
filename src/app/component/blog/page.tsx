@@ -12,7 +12,7 @@ export default function Hero () {
          
           <Image
             className="w-full h-48 object-cover"
-            src="https://example.com/sofa.jpg"
+            src="/sofa.jpg"
             alt="Modern Sofa"
             width={288}  
             height={192} 

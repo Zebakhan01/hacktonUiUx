@@ -1,59 +1,77 @@
-'use client'; // Add this line to mark the component as a Client Component
+"use client"; // Ensures it's a Client Component
 
+import { useState } from "react";
 import Image from "next/image";
-import Logo from "../../../public/Pictures/Logo (1).png";
 import Link from "next/link";
+import Logo from "../../../public/Pictures/Logo (1).png";
 import { MdPersonOutline } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { GoHeart } from "react-icons/go";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useState } from "react"; // For toggling the menu in mobile view
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full p-4 bg-white">
-      <div className="flex justify-between items-center">
+    <header className="w-full bg-white shadow-md p-4">
+      <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="logo">
-          <Image src={Logo} width={185} height={41} alt="Logo" />
+        <div>
+          <Image src={Logo} width={185} height={41} alt="Funiro Logo" priority />
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex space-x-8">
-          <Link href={"/"}>Home</Link>
-          <Link href="/Shop">Shop</Link>
-          <Link href="/Blog">Blog </Link>
-          <Link href={"/Contact"}>Contact</Link>
-        </div>
+        <nav className="hidden lg:flex space-x-8">
+          <Link href="/" className="hover:text-gray-600 transition">Home</Link>
+          <Link href="/Shop" className="hover:text-gray-600 transition">Shop</Link>
+          <Link href="/Blog" className="hover:text-gray-600 transition">Blog</Link>
+          <Link href="/Contact" className="hover:text-gray-600 transition">Contact</Link>
+        </nav>
 
-        {/* Icons */}
-        <div className="hidden lg:flex space-x-6">
-          <MdPersonOutline className="text-xl cursor-pointer" />
-          <CiSearch className="text-xl cursor-pointer" />
-          <GoHeart className="text-xl cursor-pointer" />
-          <Link href={'/cart'}>
-            <AiOutlineShoppingCart className="text-xl cursor-pointer" />
+        {/* Desktop Icons */}
+        <div className="hidden lg:flex space-x-6 text-xl">
+          <MdPersonOutline className="cursor-pointer hover:text-gray-600 transition" />
+          <CiSearch className="cursor-pointer hover:text-gray-600 transition" />
+          <GoHeart className="cursor-pointer hover:text-gray-600 transition" />
+          <Link href="/cart">
+            <AiOutlineShoppingCart className="cursor-pointer hover:text-gray-600 transition" />
           </Link>
         </div>
 
-        {/* Hamburger Icon for Mobile */}
-        <div className="lg:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-xl">
-            {menuOpen ? "X" : "☰"}
-          </button>
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="lg:hidden text-2xl focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          {menuOpen ? "✖" : "☰"}
+        </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Menu */}
       {menuOpen && (
-        <div className="lg:hidden mt-4 space-y-4">
-          <Link href={"/"}>Home</Link>
-          <Link href="/Shop">Shop</Link>
-          <Link href={"/blog"}>Blog</Link>
-          <Link href={"/Contact"}>Contact</Link>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="lg:hidden fixed inset-0 bg-white p-6 space-y-4 flex flex-col items-center justify-center z-50 shadow-md"
+        >
+          <Link href="/" className="text-xl hover:text-gray-600 transition" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="/Shop" className="text-xl hover:text-gray-600 transition" onClick={() => setMenuOpen(false)}>Shop</Link>
+          <Link href="/Blog" className="text-xl hover:text-gray-600 transition" onClick={() => setMenuOpen(false)}>Blog</Link>
+          <Link href="/Contact" className="text-xl hover:text-gray-600 transition" onClick={() => setMenuOpen(false)}>Contact</Link>
+          
+          {/* Icons for Mobile */}
+          <div className="flex space-x-6 mt-4 text-2xl">
+            <MdPersonOutline className="cursor-pointer hover:text-gray-600 transition" />
+            <CiSearch className="cursor-pointer hover:text-gray-600 transition" />
+            <GoHeart className="cursor-pointer hover:text-gray-600 transition" />
+            <Link href="/cart">
+              <AiOutlineShoppingCart className="cursor-pointer hover:text-gray-600 transition" />
+            </Link>
+          </div>
+        </motion.div>
       )}
     </header>
   );

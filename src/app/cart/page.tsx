@@ -64,7 +64,7 @@ export default function Cart() {
           <p className="text-xs md:text-sm">Order over 150 $</p>
         </div>
         <div className="text-center">
-          <Image src="/customer.png" width={40} height={40} alt="24/7 Support" />
+          <Image src="/Picutures/customer.png" width={40} height={40} alt="24/7 Support" />
           <h4 className="font-bold text-sm md:text-base">24 / 7 Support</h4>
           <p className="text-xs md:text-sm">Dedicated support</p>
         </div>
