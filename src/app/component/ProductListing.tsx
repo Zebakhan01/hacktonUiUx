@@ -13,7 +13,7 @@ const ProductListing = ({product}:{product:Product}) => {
             <div
               className="flex flex-col items-center bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
-              <Link href={`Prdouct/${product.id}`}>
+              <Link href={`Prdouct/${product._id}`}>
               <Image
                 src={urlFor(product.image).url()} // Convert ImageUrlBuilder to string URL
                 alt={product.name}

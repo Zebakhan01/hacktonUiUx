@@ -57,6 +57,23 @@ export default function ShopHero() {
       image: '/Pictures/dining.png',
       description: 'A creative designer who loves creating stunning visuals.',
     },
+
+
+    {
+      name: 'lolito',
+      price: 'Rp 2.500.000',
+      age: 25,
+      image: '/Pictures/lolito.png',
+      description: 'luxury big sofa.',
+    },  {
+      name: 'Jane Smith',
+      price: 'Rp 2.500.000',
+      age: 25,
+      image: '/Pictures/dining.png',
+      description: 'A creative designer who loves creating stunning visuals.',
+    },  
+      
+  
     // Additional objects can be added here
   ];
 

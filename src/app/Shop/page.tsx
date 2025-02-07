@@ -1,112 +1,30 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-import { client } from '@/sanity/lib/client';
-import ProductListing from '../component/ProductListing';
-import SearchAndFilter from '../component/SearchAndFilter';
-import Link from 'next/link';
+import React from 'react'
 import Image from 'next/image';
-import Pagination from '../component/pagination';
+import { urlFor } from '@/sanity/lib/image';
+import Link from 'next/link';
 
-// Define Product interface
-const Shop = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(8); // Change this value to adjust the number of products per page
-
-  // Fetch products from Sanity on mount
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const query = `*[_type == "product"]{
-        category,
-        _id,
-        title,
-        price,
-        description,
-         discountPercentage
-        stockLevel,
-        discountPercentage,
-        isFeaturedProduct,
-        name,
-        "imageUrl": productImage.asset->url,
-        tags
-      }
-        `;
-      
-
-      try {
-        const products = await client.fetch(query);
-        setProducts(products);
-        setFilteredProducts(products); // Initialize filtered products
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  // Handle filtering
-  const handleFilter = (filtered: Product[]) => {
-    setFilteredProducts(filtered);
-    setCurrentPage(1); // Reset to the first page when filtering
-  };
-
-  // Calculate paginated products
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-
-  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-
+const ProductListing = ({ product }: { product: Product }) => {
   return (
     <div>
-      {/* Banner Section */}
-      <div className="relative text-black">
-        <Image
-          src="/shophero.png" // Replace with the correct image file path
-          alt="Shop Banner"
-          height={400}
-          width={1600}
-          className="w-full h-40 md:h-auto object-cover"
-        />
-        <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-5xl font-semibold">
-          Shop
-        </h1>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-14">
-          <p className="text-gray-700 text-xs md:text-xl flex items-center">
-            <Link href="/" className="font-bold hover:underline">
-              Home
-            </Link>
-            <span className="font-bold mx-2">{'>'}</span>
-            <Link href="/shop" className="hover:underline">
-              Shop
-            </Link>
-          </p>
+      {/* Product List */}
+      <div className="flex flex-col items-center bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+        <Link href={`Product/${product._id}`}>
+          <Image
+            src={product.image ? urlFor(product.image).url() : "/bed.jpg"}
+            alt={product.name}
+            height={300} 
+            width={300}
+            className="h-[250px] w-full object-cover"
+          />
+        </Link>
+        {/* Product Details */}
+        <div className="p-4 text-center">
+          <p className="text-lg font-medium text-gray-800">{product.name}</p>
+          <h3 className="text-xl font-semibold text-gray-900 mt-2">${product.price}</h3>
         </div>
       </div>
-
-      {/* Search and Filter Section */}
-      <SearchAndFilter products={products} onFilter={handleFilter} />
-
-      {/* Product Listing Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {currentProducts.map(product => (
-          <ProductListing product={product} key={product._id} />
-        ))}
-      </div>
-
-      {/* Pagination Section */}
-      {totalPages > 1 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
-      )}
     </div>
   );
 };
 
-export default Shop;
+export default ProductListing;
